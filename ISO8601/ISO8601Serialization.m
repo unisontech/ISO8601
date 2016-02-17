@@ -7,14 +7,15 @@
 //
 
 #import "ISO8601Serialization.h"
+#import "ISO8601DateComponents.h"
 
 @implementation ISO8601Serialization
 
-+ (NSDateComponents * __nullable)dateComponentsForString:(NSString * __nonnull)string {
++ (ISO8601DateComponents * __nullable)dateComponentsForString:(NSString * __nonnull)string {
 	NSScanner *scanner = [[NSScanner alloc] initWithString:string];
 	scanner.charactersToBeSkipped = nil;
 
-	NSDateComponents *dateComponents = [[NSDateComponents alloc] init];
+	ISO8601DateComponents *dateComponents = [ISO8601DateComponents new];
 
 	// Year
 	NSInteger year;
@@ -68,14 +69,19 @@
 	}
 	dateComponents.minute = minute;
 
-	// Second
+	// Second & Millisecond
 	NSUInteger scannerLocation = scanner.scanLocation;
 	if ([scanner scanString:@":" intoString:nil]) {
-		NSInteger second;
-		if (![scanner scanInteger:&second]) {
+		float secondWithMilliseconds;
+		if (![scanner scanFloat:&secondWithMilliseconds]) {
 			return dateComponents;
 		}
-		dateComponents.second = second;
+		float second = floorf(secondWithMilliseconds);
+		if (fabs((second) - (secondWithMilliseconds)) >= FLT_EPSILON) {
+			NSInteger millisecond = (NSInteger)(roundf((secondWithMilliseconds - second) * 1000.f));
+			dateComponents.millisecond = millisecond;
+		}
+		dateComponents.second = (NSInteger)second;
 	} else {
 		scanner.scanLocation = scannerLocation;
 	}

@@ -8,6 +8,7 @@
 
 #import "NSDate+ISO8601.h"
 #import "ISO8601Serialization.h"
+#import "ISO8601DateComponents.h"
 
 @implementation NSDate (ISO8601)
 
@@ -19,7 +20,7 @@
 
 
 + (NSDate * __nullable)dateWithISO8601String:(NSString * __nonnull)string timeZone:(inout NSTimeZone * __nonnull * __nullable)timeZone usingCalendar:(NSCalendar * __nullable)calendar {
-	NSDateComponents *components = [ISO8601Serialization dateComponentsForString:string];
+	ISO8601DateComponents *components = [ISO8601Serialization dateComponentsForString:string];
 	if (components == nil) {
 		return nil;
 	}
@@ -37,7 +38,11 @@
 	// Use a UTC calendar to generate the date
 	calendar.timeZone = UTCTimeZone;
 
-	return [calendar dateFromComponents:components];
+	NSDate *date = [calendar dateFromComponents:components];
+
+	date = [date dateByAddingTimeInterval:(NSTimeInterval)(components.millisecond / 1000.0)];
+
+	return date;
 }
 
 

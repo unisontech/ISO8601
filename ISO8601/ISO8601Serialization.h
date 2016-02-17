@@ -12,6 +12,8 @@
 	#import <Foundation/Foundation.h>
 #endif
 
+@class ISO8601DateComponents;
+
 @interface ISO8601Serialization : NSObject
 
 #pragma mark - Reading
@@ -23,7 +25,7 @@
 
  @return An object containing the date components for a given ISO8601 string.
  */
-+ (NSDateComponents * __nullable)dateComponentsForString:(NSString * __nonnull)string;
++ (ISO8601DateComponents * __nullable)dateComponentsForString:(NSString * __nonnull)string;
 
 
 #pragma mark - Writing

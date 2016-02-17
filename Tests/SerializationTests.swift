@@ -18,29 +18,29 @@ class SerializationTests: XCTestCase {
 	}
 
 	func testReadingUTC() {
-		XCTAssertEqual(parse("1971-02-03T04:05:06.789Z"), components(year: 1971, month: 2, day: 3, hour: 4, minute: 5, second: 6, timeZoneOffset: 0))
-		XCTAssertEqual(parse("1971-02-03T04:05:06.78Z"), components(year: 1971, month: 2, day: 3, hour: 4, minute: 5, second: 6, timeZoneOffset: 0))
-		XCTAssertEqual(parse("1971-02-03T04:05:06.7Z"), components(year: 1971, month: 2, day: 3, hour: 4, minute: 5, second: 6, timeZoneOffset: 0))
+		XCTAssertEqual(parse("1971-02-03T04:05:06.789Z"), components(year: 1971, month: 2, day: 3, hour: 4, minute: 5, second: 6, millisecond: 789, timeZoneOffset: 0))
+		XCTAssertEqual(parse("1971-02-03T04:05:06.78Z"), components(year: 1971, month: 2, day: 3, hour: 4, minute: 5, second: 6, millisecond: 780, timeZoneOffset: 0))
+		XCTAssertEqual(parse("1971-02-03T04:05:06.7Z"), components(year: 1971, month: 2, day: 3, hour: 4, minute: 5, second: 6, millisecond: 700, timeZoneOffset: 0))
 		XCTAssertEqual(parse("1971-02-03T04:05:06Z"),  components(year: 1971, month: 2, day: 3, hour: 4, minute: 5, second: 6, timeZoneOffset: 0))
 		XCTAssertEqual(parse("1971-02-03T04:05Z"), components(year: 1971, month: 2, day: 3, hour: 4, minute: 5, timeZoneOffset: 0))
 		XCTAssertEqual(parse("1970-01-01T00:00:00.000Z"), components(year: 1970, month: 1, day: 1, hour: 0, minute: 0, second: 0, timeZoneOffset: 0))
-		XCTAssertEqual(parse("1970-06-30T01:06:40.981Z"), components(year: 1970, month: 6, day: 30, hour: 1, minute: 6, second: 40, timeZoneOffset: 0))
-		XCTAssertEqual(parse("2058-02-20T18:29:11.100Z"), components(year: 2058, month: 2, day: 20, hour: 18, minute: 29, second: 11, timeZoneOffset: 0))
+		XCTAssertEqual(parse("1970-06-30T01:06:40.981Z"), components(year: 1970, month: 6, day: 30, hour: 1, minute: 6, second: 40, millisecond: 981, timeZoneOffset: 0))
+		XCTAssertEqual(parse("2058-02-20T18:29:11.100Z"), components(year: 2058, month: 2, day: 20, hour: 18, minute: 29, second: 11, millisecond: 100, timeZoneOffset: 0))
 		XCTAssertEqual(parse("3001-01-01T08:00:00.000Z"), components(year: 3001, month: 1, day: 1, hour: 8, minute: 0, second: 0, timeZoneOffset: 0))
-		XCTAssertEqual(parse("2013-02-20T18:29:11.100Z"), components(year: 2013, month: 2, day: 20, hour: 18, minute: 29, second: 11, timeZoneOffset: 0))
+		XCTAssertEqual(parse("2013-02-20T18:29:11.100Z"), components(year: 2013, month: 2, day: 20, hour: 18, minute: 29, second: 11, millisecond: 100, timeZoneOffset: 0))
 	}
 
 	func testReadingTimeZones() {
-		XCTAssertEqual(parse("1971-02-03T09:16:06.789+0511"), components(year: 1971, month: 2, day: 3, hour: 9, minute: 16, second: 6, timeZoneOffset: 18660))
-		XCTAssertEqual(parse("1971-02-03T09:16:06.78+0511"), components(year: 1971, month: 2, day: 3, hour: 9, minute: 16, second: 6, timeZoneOffset: 18660))
-		XCTAssertEqual(parse("1971-02-03T09:16:06.7+0511"), components(year: 1971, month: 2, day: 3, hour: 9, minute: 16, second: 6, timeZoneOffset: 18660))
+		XCTAssertEqual(parse("1971-02-03T09:16:06.789+0511"), components(year: 1971, month: 2, day: 3, hour: 9, minute: 16, second: 6, millisecond: 789, timeZoneOffset: 18660))
+		XCTAssertEqual(parse("1971-02-03T09:16:06.78+0511"), components(year: 1971, month: 2, day: 3, hour: 9, minute: 16, second: 6, millisecond: 780, timeZoneOffset: 18660))
+		XCTAssertEqual(parse("1971-02-03T09:16:06.7+0511"), components(year: 1971, month: 2, day: 3, hour: 9, minute: 16, second: 6, millisecond: 700, timeZoneOffset: 18660))
 		XCTAssertEqual(parse("1971-02-03T09:16:06+0511"), components(year: 1971, month: 2, day: 3, hour: 9, minute: 16, second: 6, timeZoneOffset: 18660))
 		XCTAssertEqual(parse("1971-02-03T09:16+0511"), components(year: 1971, month: 2, day: 3, hour: 9, minute: 16, timeZoneOffset: 18660))
-		XCTAssertEqual(parse("1970-06-29T21:06:40.981-0400"), components(year: 1970, month: 6, day: 29, hour: 21, minute: 6, second: 40, timeZoneOffset: -14400))
+		XCTAssertEqual(parse("1970-06-29T21:06:40.981-0400"), components(year: 1970, month: 6, day: 29, hour: 21, minute: 6, second: 40, millisecond: 981, timeZoneOffset: -14400))
 		XCTAssertEqual(parse("1969-12-31T16:00:00.000-0800"), components(year: 1969, month: 12, day: 31, hour: 16, minute: 0, second: 0, timeZoneOffset: -28800))
-		XCTAssertEqual(parse("2058-02-20T13:29:11.100-0500"), components(year: 2058, month: 2, day: 20, hour: 13, minute: 29, second: 11, timeZoneOffset: -18000))
-		XCTAssertEqual(parse("2013-02-20T13:29:11.100-0500"), components(year: 2013, month: 2, day: 20, hour: 13, minute: 29, second: 11, timeZoneOffset: -18000))
-		XCTAssertEqual(parse("2013-02-20T13:29:11.100-0501"), components(year: 2013, month: 2, day: 20, hour: 13, minute: 29, second: 11, timeZoneOffset: -18060))
+		XCTAssertEqual(parse("2058-02-20T13:29:11.100-0500"), components(year: 2058, month: 2, day: 20, hour: 13, minute: 29, second: 11, millisecond: 100, timeZoneOffset: -18000))
+		XCTAssertEqual(parse("2013-02-20T13:29:11.100-0500"), components(year: 2013, month: 2, day: 20, hour: 13, minute: 29, second: 11, millisecond: 100, timeZoneOffset: -18000))
+		XCTAssertEqual(parse("2013-02-20T13:29:11.100-0501"), components(year: 2013, month: 2, day: 20, hour: 13, minute: 29, second: 11, millisecond: 100, timeZoneOffset: -18060))
 	}
 
 	func testLeapYear() {
@@ -76,7 +76,7 @@ class SerializationTests: XCTestCase {
 		XCTAssertEqual(parse("-011985-04-12T10:15:30"), components(year: -11985, month: 4, day: 12, hour: 10, minute: 15, second: 30))
 		XCTAssertEqual(parse("02-04-12"), components(year: 2, month: 4, day: 12))
 		XCTAssertEqual(parse("0002-04-12"), components(year: 2, month: 4, day: 12))
-		XCTAssertEqual(parse("2013-06-27T15:39:32.508Z"), components(year: 2013, month: 6, day: 27, hour: 15, minute: 39, second: 32, timeZoneOffset: 0))
+		XCTAssertEqual(parse("2013-06-27T15:39:32.508Z"), components(year: 2013, month: 6, day: 27, hour: 15, minute: 39, second: 32, millisecond: 508, timeZoneOffset: 0))
 		XCTAssertEqual(parse("2014-03-18T20:00:00.000-07:00"), components(year: 2014, month: 3, day: 18, hour: 20, minute: 0, second: 0, timeZoneOffset: -7 * 60 * 60))
 		XCTAssertEqual(parse("1999-05-23 23:55:21+0900"), components(year: 1999, month: 5, day: 23, hour: 23, minute: 55, second: 21, timeZoneOffset: 9 * 60 * 60))
 		XCTAssertEqual(parse("1999-05-23 23:55:21-0900"), components(year: 1999, month: 5, day: 23, hour: 23, minute: 55, second: 21, timeZoneOffset: -9 * 60 * 60))
@@ -90,11 +90,11 @@ class SerializationTests: XCTestCase {
 		XCTAssertEqual(parse("2014-03-13"), components(year: 2014, month: 3, day: 13))
 		XCTAssertEqual(parse("2014-03-13T10:42:12"), components(year: 2014, month: 3, day: 13, hour: 10, minute: 42, second: 12))
 		XCTAssertEqual(parse("2014-03-13T10:42:12"), components(year: 2014, month: 3, day: 13, hour: 10, minute: 42, second: 12))
-		XCTAssertEqual(parse("2014-03-13T10:42:12.123"), components(year: 2014, month: 3, day: 13, hour: 10, minute: 42, second: 12))
-		XCTAssertEqual(parse("2014-03-13T10:42:12.123Z"), components(year: 2014, month: 3, day: 13, hour: 10, minute: 42, second: 12, timeZoneOffset: 0))
+		XCTAssertEqual(parse("2014-03-13T10:42:12.123"), components(year: 2014, month: 3, day: 13, hour: 10, minute: 42, second: 12, millisecond: 123))
+		XCTAssertEqual(parse("2014-03-13T10:42:12.123Z"), components(year: 2014, month: 3, day: 13, hour: 10, minute: 42, second: 12, millisecond:123, timeZoneOffset: 0))
 		XCTAssertEqual(parse("2014-03-13T10:42:12Z"), components(year: 2014, month: 3, day: 13, hour: 10, minute: 42, second: 12, timeZoneOffset: 0))
-		XCTAssertEqual(parse("2014-03-13T10:42:12.123+07:00"), components(year: 2014, month: 3, day: 13, hour: 10, minute: 42, second: 12, timeZoneOffset: 7 * 60 * 60))
-		XCTAssertEqual(parse("2014-03-13T10:42:12.123-09:30"), components(year: 2014, month: 3, day: 13, hour: 10, minute: 42, second: 12, timeZoneOffset: -9.5 * 60 * 60))
+		XCTAssertEqual(parse("2014-03-13T10:42:12.123+07:00"), components(year: 2014, month: 3, day: 13, hour: 10, minute: 42, second: 12, millisecond: 123, timeZoneOffset: 7 * 60 * 60))
+		XCTAssertEqual(parse("2014-03-13T10:42:12.123-09:30"), components(year: 2014, month: 3, day: 13, hour: 10, minute: 42, second: 12, millisecond:123, timeZoneOffset: -9.5 * 60 * 60))
 		XCTAssertEqual(parse("2014-03-13T10:42:12+07:00"), components(year: 2014, month: 3, day: 13, hour: 10, minute: 42, second: 12, timeZoneOffset: 7 * 60 * 60))
 		XCTAssertEqual(parse("2014-03-13T10:42:12-09:30"), components(year: 2014, month: 3, day: 13, hour: 10, minute: 42, second: 12, timeZoneOffset: -9.5 * 60 * 60))
 	}

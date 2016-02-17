@@ -25,6 +25,9 @@
 		21B3A3F519894F9C00322041 /* ISO8601Serialization.h in Headers */ = {isa = PBXBuildFile; fileRef = 21B3A3F319894F9C00322041 /* ISO8601Serialization.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		21B3A3F619894F9C00322041 /* ISO8601Serialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 21B3A3F419894F9C00322041 /* ISO8601Serialization.m */; };
 		21F67C1719895027008D6B22 /* SerializationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F67C1519895027008D6B22 /* SerializationTests.swift */; };
+		A51E65921C74712B00301990 /* ISO8601DateComponents.h in Headers */ = {isa = PBXBuildFile; fileRef = A5FCA6601C746E6E00C02C50 /* ISO8601DateComponents.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A5FCA6621C746E6E00C02C50 /* ISO8601DateComponents.h in Headers */ = {isa = PBXBuildFile; fileRef = A5FCA6601C746E6E00C02C50 /* ISO8601DateComponents.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A5FCA6631C746E6E00C02C50 /* ISO8601DateComponents.m in Sources */ = {isa = PBXBuildFile; fileRef = A5FCA6611C746E6E00C02C50 /* ISO8601DateComponents.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +69,8 @@
 		21B3A3FC19894FB900322041 /* NSDate+ISO8601.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+ISO8601.m"; sourceTree = "<group>"; };
 		21F67C1419895027008D6B22 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		21F67C1519895027008D6B22 /* SerializationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SerializationTests.swift; sourceTree = "<group>"; };
+		A5FCA6601C746E6E00C02C50 /* ISO8601DateComponents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISO8601DateComponents.h; sourceTree = "<group>"; };
+		A5FCA6611C746E6E00C02C50 /* ISO8601DateComponents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISO8601DateComponents.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +134,8 @@
 				21B3A3DC19894F4600322041 /* ISO8601.h */,
 				21B3A3F319894F9C00322041 /* ISO8601Serialization.h */,
 				21B3A3F419894F9C00322041 /* ISO8601Serialization.m */,
+				A5FCA6601C746E6E00C02C50 /* ISO8601DateComponents.h */,
+				A5FCA6611C746E6E00C02C50 /* ISO8601DateComponents.m */,
 				21B3A3FB19894FB900322041 /* NSDate+ISO8601.h */,
 				21B3A3FC19894FB900322041 /* NSDate+ISO8601.m */,
 				21B3A3DA19894F4600322041 /* Supporting Files */,
@@ -165,6 +172,7 @@
 				219D6AD41B15970500DE79BC /* NSDate+ISO8601.h in Headers */,
 				219D6AD31B15970500DE79BC /* ISO8601Serialization.h in Headers */,
 				219D6AD21B1596FF00DE79BC /* ISO8601.h in Headers */,
+				A51E65921C74712B00301990 /* ISO8601DateComponents.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -174,6 +182,7 @@
 			files = (
 				214B54AF19899B2600980A0B /* NSDate+ISO8601.h in Headers */,
 				21B3A3F519894F9C00322041 /* ISO8601Serialization.h in Headers */,
+				A5FCA6621C746E6E00C02C50 /* ISO8601DateComponents.h in Headers */,
 				21B3A3DD19894F4600322041 /* ISO8601.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -354,6 +363,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5FCA6631C746E6E00C02C50 /* ISO8601DateComponents.m in Sources */,
 				21B3A3F619894F9C00322041 /* ISO8601Serialization.m in Sources */,
 				214B54AE19899B2400980A0B /* NSDate+ISO8601.m in Sources */,
 			);

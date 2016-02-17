@@ -23,6 +23,12 @@ class DateTests: XCTestCase {
 		XCTAssertNil(NSDate(ISO8601String: "WRONG DATA"))
     }
 
+	func testMillisecond() {
+		XCTAssertEqual(NSDate(ISO8601String: "2014-07-30T22:35:23.123Z"), NSDate(timeIntervalSince1970: 1406759723).dateByAddingTimeInterval(0.123))
+		XCTAssertEqual(NSDate(ISO8601String: "2014-07-30T22:35:23.1239Z"), NSDate(timeIntervalSince1970: 1406759723).dateByAddingTimeInterval(0.124))
+		XCTAssertEqual(NSDate(ISO8601String: "2014-07-30T22:35:23.1Z"), NSDate(timeIntervalSince1970: 1406759723).dateByAddingTimeInterval(0.1))
+	}
+
 	func testWriting() {
 		XCTAssertEqual(NSDate(timeIntervalSince1970: 1406759723).ISO8601StringWithTimeZone(nil, usingCalendar: nil), "2014-07-30T22:35:23Z")
 	}
